@@ -3,65 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMEICOIN</title>
+    <title>COMEICOIN - The Funniest Memecoin</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* General Styles */
         body {
             margin: 0;
             font-family: 'Open Sans', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
+            line-height: 1.6;
             text-align: center;
-            padding: 20px;
         }
-        h1 {
+        header {
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
             font-size: 3rem;
             margin: 0;
             color: #222;
         }
-        img {
-            max-width: 300px;
-            margin: 20px auto;
-            display: block;
-        }
-        p {
+        header p {
             font-size: 1.2rem;
+            color: #666;
+        }
+        .main-image img {
+            margin: 30px auto;
+            width: 300px;
+            display: block;
+            animation: fadeIn 2s ease-in;
+        }
+        .cta-buttons {
             margin: 20px 0;
         }
-        .cta {
+        .cta-buttons a {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: white;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            color: #fff;
             background-color: #007BFF;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
-        .cta:hover {
+        .cta-buttons a:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #eee;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1s forwards ease-out;
+        }
+        section:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        section:nth-child(3) {
+            animation-delay: 1s;
         }
         footer {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: #777;
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Countdown Timer */
+        .countdown {
+            font-size: 2rem;
+            color: #333;
+            margin: 20px auto;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>COMEICOIN</h1>
-        <img src="banana.jpg" alt="COMEICOIN Icon">
-        <p>The funniest memecoin for the internet's greatest laughs! Join us today and be part of the movement.</p>
-        <a href="#" class="cta">Discover More</a>
-        <footer>&copy; 2024 COMEICOIN. All Rights Reserved.</footer>
+        <p>The Funniest Memecoin for Internet Lovers</p>
+    </header>
+    <div class="main-image">
+        <img src="banana.jpg" alt="COMEICOIN Banana">
     </div>
+    <div class="countdown" id="countdown">
+        Launching in: <span id="time"></span>
+    </div>
+    <div class="cta-buttons">
+        <a href="https://metamask.io/" target="_blank">Get MetaMask</a>
+        <a href="https://pancakeswap.finance/" target="_blank">Buy on PancakeSwap</a>
+        <a href="https://t.me/COMEICOIN" target="_blank">Join Telegram</a>
+    </div>
+    <section>
+        <h2>About COMEICOIN</h2>
+        <p>COMEICOIN is the funniest memecoin created to spread laughter, joy, and a sprinkle of chaos across the internet. Join the movement today and be part of the meme revolution!</p>
+    </section>
+    <section>
+        <h2>How to Buy COMEICOIN</h2>
+        <p>Buying COMEICOIN is easy! Just follow these steps:</p>
+        <ol>
+            <li>Download a crypto wallet like MetaMask.</li>
+            <li>Add the Binance Smart Chain (BSC) network.</li>
+            <li>Purchase BNB and swap for COMEICOIN on PancakeSwap.</li>
+        </ol>
+    </section>
+    <section>
+        <h2>Why Choose COMEICOIN?</h2>
+        <p>We’re not just another memecoin. COMEICOIN is a community-driven project with a mission to bring fun, financial rewards, and unforgettable memes to everyone involved. Don’t miss out!</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 COMEICOIN. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+    <script>
+        // Countdown Timer
+        const launchDate = new Date("2024-12-31T00:00:00").getTime();
+        const countdown = document.getElementById("time");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                countdown.innerHTML = "We are live!";
+            }
+        }
+
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
